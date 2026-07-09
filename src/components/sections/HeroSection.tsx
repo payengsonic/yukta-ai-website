@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
@@ -37,11 +37,9 @@ function AppSlideshow() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % SLIDES.length);
-    }, 2000);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
-
-  const slide = SLIDES[index];
 
   return (
     <motion.div
@@ -77,26 +75,26 @@ function AppSlideshow() {
           style={{ width: 72, height: 20, background: "#0f172a" }}
         />
 
-        {/* Sliding image */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={slide.src}
-            initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.97 }}
-            transition={{ duration: 0.45, ease }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              className={slide.contain ? "object-contain p-6" : "object-cover object-top"}
-              sizes="220px"
-              priority={index === 0}
-            />
-          </motion.div>
-        </AnimatePresence>
+        {/* Stacked images — crossfade by animating opacity simultaneously */}
+        <div className="absolute inset-0">
+          {SLIDES.map((s, i) => (
+            <motion.div
+              key={s.src}
+              className="absolute inset-0"
+              animate={{ opacity: i === index ? 1 : 0 }}
+              transition={{ duration: 0.9, ease: "easeInOut" }}
+            >
+              <Image
+                src={s.src}
+                alt={s.alt}
+                fill
+                className={s.contain ? "object-contain p-6" : "object-cover object-top"}
+                sizes="220px"
+                priority={i === 0}
+              />
+            </motion.div>
+          ))}
+        </div>
 
         {/* Home indicator */}
         <div
