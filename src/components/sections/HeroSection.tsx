@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { BRAND } from "@/lib/constants";
@@ -20,6 +21,109 @@ const item = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
 };
+
+const SLIDES = [
+  { src: "/yukta-icon.png", alt: "YUKTA AI app icon", contain: true },
+  { src: "/app/chatbot.jpeg", alt: "AI Chatbot", contain: false },
+  { src: "/app/nutrition.jpeg", alt: "Nutrition Agent", contain: false },
+  { src: "/app/chef.jpeg", alt: "Chef Agent", contain: false },
+  { src: "/app/chatbot-features.jpeg", alt: "Chatbot Features", contain: false },
+  { src: "/app/sidebar.jpeg", alt: "Dashboard", contain: false },
+];
+
+function AppSlideshow() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % SLIDES.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const slide = SLIDES[index];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.85 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7, delay: 0.3, ease }}
+      className="relative flex justify-center"
+    >
+      {/* Glow behind the phone */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(0,194,168,0.2) 0%, transparent 70%)",
+          filter: "blur(50px)",
+          transform: "scale(1.5)",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Phone frame */}
+      <div
+        className="relative rounded-[2.2rem] border-[3px] border-white/20 overflow-hidden shadow-2xl"
+        style={{
+          width: 220,
+          height: 430,
+          background: "#0f172a",
+          boxShadow: "0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05)",
+        }}
+      >
+        {/* Notch */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 z-10 rounded-b-xl"
+          style={{ width: 72, height: 20, background: "#0f172a" }}
+        />
+
+        {/* Sliding image */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={slide.src}
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.97 }}
+            transition={{ duration: 0.45, ease }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              className={slide.contain ? "object-contain p-6" : "object-cover object-top"}
+              sizes="220px"
+              priority={index === 0}
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Home indicator */}
+        <div
+          className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full z-10"
+          style={{ width: 52, height: 3, background: "rgba(255,255,255,0.25)" }}
+        />
+      </div>
+
+      {/* Dot indicators */}
+      <div className="absolute -bottom-6 flex gap-1.5 left-1/2 -translate-x-1/2">
+        {SLIDES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            aria-label={`Show slide ${i + 1}`}
+            className="rounded-full transition-all duration-300"
+            style={{
+              width: i === index ? 16 : 6,
+              height: 6,
+              background: i === index ? "#00c2a8" : "rgba(0,0,0,0.2)",
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
 
 export function HeroSection() {
   return (
@@ -47,6 +151,7 @@ export function HeroSection() {
 
       <div className="relative max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
           {/* Left: copy */}
           <motion.div
             variants={container}
@@ -59,6 +164,28 @@ export function HeroSection() {
                 <span aria-hidden="true">✦</span>
                 AI-Powered Grocery Shopping
               </Badge>
+            </motion.div>
+
+            {/* Floating chatbot above headline */}
+            <motion.div
+              variants={item}
+              className="relative"
+              aria-hidden="true"
+            >
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-20 h-20"
+              >
+                <Image
+                  src="/chatbot-glow.png"
+                  alt="YUKTA AI assistant"
+                  fill
+                  className="object-contain drop-shadow-xl"
+                  sizes="80px"
+                  priority
+                />
+              </motion.div>
             </motion.div>
 
             <motion.h1
@@ -75,13 +202,7 @@ export function HeroSection() {
 
             <motion.div variants={item} className="flex flex-wrap gap-3">
               <Button href={BRAND.playStoreUrl} size="lg" variant="primary">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M3.18 23.76c.39.22.83.24 1.24.04L15.3 12 4.42.2C4.01 0 3.57.02 3.18.24 2.46.65 2 1.38 2 2.22v19.56c0 .84.46 1.57 1.18 1.98z" />
                   <path d="M22 12l-4.04-2.33-3.3 3.33 3.3 3.33L22 14c.65-.37 1-.97 1-1.5 0-.55-.35-1.15-1-1.5z" />
                   <path d="M15.3 12L4.42 23.8l10.88-6.14L15.3 12z" opacity=".6" />
@@ -126,41 +247,11 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right: app icon */}
-          <div className="flex justify-center lg:justify-end">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="relative"
-            >
-              {/* Outer glow rings */}
-              <div
-                className="absolute inset-0 rounded-[3rem] opacity-20 pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(79,70,229,0.6) 0%, transparent 70%)", filter: "blur(40px)", transform: "scale(1.4)" }}
-                aria-hidden="true"
-              />
-              <div
-                className="absolute inset-0 rounded-[3rem] opacity-15 pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(0,194,168,0.6) 0%, transparent 70%)", filter: "blur(60px)", transform: "scale(1.8)" }}
-                aria-hidden="true"
-              />
-              <motion.div
-                animate={{ y: [0, -14, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-64 h-64 md:w-80 md:h-80"
-              >
-                <Image
-                  src="/chatbot-hero.jpeg"
-                  alt="YUKTA AI chatbot"
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                  sizes="(max-width: 768px) 256px, 320px"
-                  priority
-                />
-              </motion.div>
-            </motion.div>
+          {/* Right: cycling app screenshots */}
+          <div className="flex justify-center lg:justify-end pb-8">
+            <AppSlideshow />
           </div>
+
         </div>
       </div>
 
