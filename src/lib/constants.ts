@@ -5,7 +5,7 @@ export const BRAND = {
   company: "Udaan Spark AI",
   tagline: "Shop Smarter. Save More.",
   description:
-    "YUKTA AI is your AI-powered grocery shopping assistant. Compare prices across Blinkit, Zepto, and Instamart instantly — and always checkout with the best deal.",
+    "YUKTA AI is your AI-powered grocery shopping assistant. Compare prices across all major quick delivery apps and get personalised recommendations based on your budget, nutrition goals, and taste — not just the lowest price.",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://yukta.udaansparkai.com",
   companyUrl: "https://udaansparkai.com",
   supportEmail: "support@udaansparkai.com",
@@ -55,7 +55,7 @@ export const FEATURES: FeatureCard[] = [
     icon: "savings",
     title: "Savings Dashboard",
     description:
-      "Track every order, see how much you saved on groceries, and watch your cumulative savings grow with every smart purchase.",
+      "Track every order, monitor how much you saved, and watch your cumulative savings grow. Smarter shopping decisions, every time.",
   },
 ];
 
@@ -64,25 +64,25 @@ export const HOW_IT_WORKS: Step[] = [
     number: 1,
     title: "Search Your Groceries",
     description:
-      "Type the items you need — from atta and dal to fruits and snacks. No special format required.",
+      "Type what you need — from atta and dal to fruits and snacks. Or just ask YUKTA AI using your voice. No special format required.",
   },
   {
     number: 2,
-    title: "Compare Multiple Stores",
+    title: "Compare Across All Quick Apps",
     description:
-      "YUKTA AI fetches real-time prices from Blinkit, Zepto, and Instamart simultaneously.",
+      "YUKTA AI fetches real-time prices from all major quick delivery apps simultaneously — one search, every option.",
   },
   {
     number: 3,
-    title: "AI Finds the Best Basket",
+    title: "AI Picks Your Perfect Basket",
     description:
-      "Our AI analyses thousands of combinations to recommend the cheapest overall basket — including delivery fees.",
+      "Our AI weighs price, quality, nutrition, and your personal preferences to recommend the basket that fits you best — not just the cheapest, but the smartest choice for your needs.",
   },
   {
     number: 4,
-    title: "Checkout and Save",
+    title: "Checkout with Confidence",
     description:
-      "Review your optimised cart and head straight to checkout. Save money on every single order.",
+      "Review your AI-optimised cart and head straight to checkout. Every order is smarter, healthier, and better value than shopping alone.",
   },
 ];
 
@@ -91,7 +91,7 @@ export const WHY_YUKTA: WhyCard[] = [
     icon: "rupee",
     title: "Saves You Money",
     description:
-      "Real savings on every order — not cashback, not coupons. Just the cheapest price, guaranteed.",
+      "Real savings on every order — not cashback, not coupons. The smartest price for your needs, every time.",
   },
   {
     icon: "clock",
@@ -129,17 +129,17 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: "How does YUKTA AI compare prices across stores?",
     answer:
-      "YUKTA AI fetches live product listings from Blinkit, Zepto, and Instamart in real time. Our AI engine then analyses every combination of stores to find the lowest total basket cost — accounting for delivery fees and minimum order values.",
+      "YUKTA AI fetches live product listings from all major quick delivery apps in real time. Our AI then analyses every combination to recommend the smartest basket — factoring in price, quality, nutritional value, delivery fees, and your personal preferences.",
   },
   {
     question: "Which grocery platforms are currently supported?",
     answer:
-      "We currently support Blinkit, Zepto, and Instamart. We are actively working on adding Swiggy Instamart, BigBasket, and Amazon Fresh in upcoming releases.",
+      "We support all major quick delivery apps including Blinkit, Zepto, and Instamart. We are actively expanding to more platforms including BigBasket and Amazon Fresh in upcoming releases.",
   },
   {
     question: "How does the AI decide which basket is best?",
     answer:
-      "Our AI evaluates price per unit, total cart value, delivery charges, and estimated delivery time. It recommends the combination that minimises your total spend while meeting your quantity requirements.",
+      "Our AI considers price per unit, total cart value, delivery charges, nutritional value, and your personal preferences. It recommends the basket that gives you the best overall value — not just the cheapest, but the most intelligent choice based on your budget, health goals, and shopping style.",
   },
   {
     question: "Is Google Login supported?",

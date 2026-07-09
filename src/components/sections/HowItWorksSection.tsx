@@ -25,7 +25,7 @@ export function HowItWorksSection() {
             {/* Summary stats */}
             <div className="grid grid-cols-3 gap-4">
               {[
-                { value: "3", unit: "Platforms", desc: "Compared instantly" },
+                { value: "All", unit: "Quick Apps", desc: "Compared instantly" },
                 { value: "₹247", unit: "Avg Saved", desc: "Per grocery order" },
                 { value: "<10s", unit: "Results", desc: "AI processing time" },
               ].map((stat) => (

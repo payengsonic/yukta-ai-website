@@ -148,14 +148,13 @@ export function HeroSection() {
               <motion.div
                 animate={{ y: [0, -14, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-64 h-64 md:w-80 md:h-80 rounded-[3rem] overflow-hidden shadow-2xl"
-                style={{ boxShadow: "0 32px 80px rgba(79,70,229,0.25), 0 8px 32px rgba(0,194,168,0.15)" }}
+                className="relative w-64 h-64 md:w-80 md:h-80"
               >
                 <Image
-                  src="/yukta-icon.png"
-                  alt="YUKTA AI app icon"
+                  src="/chatbot-hero.jpeg"
+                  alt="YUKTA AI chatbot"
                   fill
-                  className="object-cover"
+                  className="object-contain drop-shadow-2xl"
                   sizes="(max-width: 768px) 256px, 320px"
                   priority
                 />
