@@ -5,6 +5,7 @@ import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { WhyYuktaSection } from "@/components/sections/WhyYuktaSection";
 import { AppPreviewSection } from "@/components/sections/AppPreviewSection";
 import { FAQSection } from "@/components/sections/FAQSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { BRAND } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export default function HomePage() {
       <HowItWorksSection />
       <WhyYuktaSection />
       <AppPreviewSection />
+      <TestimonialsSection />
       <FAQSection />
     </>
   );

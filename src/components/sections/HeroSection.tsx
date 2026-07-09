@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { HeroIllustration } from "@/components/ui/HeroIllustration";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { BRAND } from "@/lib/constants";
@@ -126,9 +126,41 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right: illustration */}
+          {/* Right: app icon */}
           <div className="flex justify-center lg:justify-end">
-            <HeroIllustration />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              className="relative"
+            >
+              {/* Outer glow rings */}
+              <div
+                className="absolute inset-0 rounded-[3rem] opacity-20 pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(79,70,229,0.6) 0%, transparent 70%)", filter: "blur(40px)", transform: "scale(1.4)" }}
+                aria-hidden="true"
+              />
+              <div
+                className="absolute inset-0 rounded-[3rem] opacity-15 pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(0,194,168,0.6) 0%, transparent 70%)", filter: "blur(60px)", transform: "scale(1.8)" }}
+                aria-hidden="true"
+              />
+              <motion.div
+                animate={{ y: [0, -14, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-64 h-64 md:w-80 md:h-80 rounded-[3rem] overflow-hidden shadow-2xl"
+                style={{ boxShadow: "0 32px 80px rgba(79,70,229,0.25), 0 8px 32px rgba(0,194,168,0.15)" }}
+              >
+                <Image
+                  src="/yukta-icon.png"
+                  alt="YUKTA AI app icon"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 256px, 320px"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>

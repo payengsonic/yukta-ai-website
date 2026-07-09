@@ -23,13 +23,13 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-4" aria-label={BRAND.name}>
-              <div className="w-9 h-9 rounded-xl overflow-hidden relative shrink-0 shadow-sm">
+              <div className="w-11 h-11 rounded-2xl overflow-hidden relative shrink-0 shadow-md">
                 <Image
-                  src="/logo.jpeg"
+                  src="/yukta-icon.png"
                   alt="YUKTA AI logo icon"
                   fill
-                  className="object-cover object-top"
-                  sizes="36px"
+                  className="object-cover"
+                  sizes="44px"
                 />
               </div>
               <span className="font-bold text-white text-lg">{BRAND.name}</span>

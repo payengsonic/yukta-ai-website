@@ -22,40 +22,40 @@ export const NAV_LINKS: NavLink[] = [
 
 export const FEATURES: FeatureCard[] = [
   {
-    icon: "compare",
-    title: "AI Price Comparison",
+    icon: "assistant",
+    title: "AI Chatbot with Voice",
     description:
-      "Instantly compare grocery prices across Blinkit, Zepto, and Instamart so you always get the lowest total basket cost.",
+      "Talk to YUKTA AI using text or your mic. Ask anything — prices, substitutes, recipes, or nutrition — and get instant intelligent answers.",
+  },
+  {
+    icon: "compare",
+    title: "Multi-Store Price Comparison",
+    description:
+      "Search and compare prices across all major quick delivery apps simultaneously. See every option at a glance and always pick the best deal.",
   },
   {
     icon: "cart",
-    title: "Smart Cart Optimization",
+    title: "Nutrition-Curated Cart",
     description:
-      "YUKTA AI intelligently reorganises your cart across multiple stores to minimise your total spend without compromising on quality.",
-  },
-  {
-    icon: "assistant",
-    title: "AI Shopping Assistant",
-    description:
-      "Chat with your personal grocery AI — ask for suggestions, substitutes, or nutritional insights in plain language.",
+      "YUKTA AI builds your grocery cart based on your health profile and nutritional goals — not just price, but what's actually good for you.",
   },
   {
     icon: "swap",
-    title: "Intelligent Alternatives",
+    title: "AI Diet Plan & Nutrition Agent",
     description:
-      "Discover smarter product alternatives that match your preferences and budget — recommended by AI, not ads.",
+      "Set your dietary goals and let the Nutrition Agent create a personalised meal plan and automatically source the right ingredients.",
   },
   {
     icon: "lightning",
-    title: "Faster Grocery Shopping",
+    title: "Chef Agent",
     description:
-      "Stop toggling between five apps. YUKTA AI consolidates everything in one place so you can order and go.",
+      "Pick any dish, set the number of people, and the Chef Agent figures out every ingredient and orders them for you — across the cheapest stores.",
   },
   {
     icon: "savings",
-    title: "Save Money Every Order",
+    title: "Savings Dashboard",
     description:
-      "Our users save an average of ₹150–₹400 per grocery order simply by letting the AI pick the cheapest basket.",
+      "Track every order, see how much you saved on groceries, and watch your cumulative savings grow with every smart purchase.",
   },
 ];
 

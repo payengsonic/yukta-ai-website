@@ -41,13 +41,13 @@ export function Navbar() {
           <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label={BRAND.name}>
-              <div className="w-9 h-9 rounded-xl overflow-hidden relative shrink-0 shadow-sm">
+              <div className="w-11 h-11 rounded-2xl overflow-hidden relative shrink-0 shadow-md">
                 <Image
-                  src="/logo.jpeg"
+                  src="/yukta-icon.png"
                   alt="YUKTA AI logo icon"
                   fill
-                  className="object-cover object-top"
-                  sizes="36px"
+                  className="object-cover"
+                  sizes="44px"
                   priority
                 />
               </div>
@@ -120,7 +120,7 @@ export function Navbar() {
               <div className="flex items-center justify-between p-5 border-b border-border">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-xl overflow-hidden relative shrink-0">
-                    <Image src="/logo.jpeg" alt="YUKTA AI" fill className="object-cover object-top" sizes="32px" />
+                    <Image src="/yukta-icon.png" alt="YUKTA AI" fill className="object-cover" sizes="32px" />
                   </div>
                   <span className="font-bold text-text">{BRAND.name}</span>
                 </div>
