@@ -17,8 +17,9 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 const variantStyles: Record<Variant, string> = {
   primary:
     "bg-primary text-white shadow-md shadow-primary/25 hover:bg-primary-dark",
+  // Bright fill with dark-green text — intended for use on the dark brand panels.
   secondary:
-    "bg-accent text-white shadow-md shadow-accent/25 hover:bg-accent-dark",
+    "bg-bright text-accent-dark shadow-md shadow-black/20 hover:bg-primary-light",
   ghost: "bg-transparent text-text hover:bg-gray-100",
   outline:
     "bg-transparent border border-primary text-primary hover:bg-primary/5",

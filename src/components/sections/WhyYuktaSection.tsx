@@ -59,7 +59,7 @@ export function WhyYuktaSection() {
               <div className="flex gap-4 p-5 rounded-2xl border border-border bg-white hover:border-primary/30 hover:shadow-sm transition-all duration-300 h-full">
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 text-primary"
-                  style={{ background: "rgba(79,70,229,0.08)" }}
+                  style={{ background: "rgba(22,163,74,0.08)" }}
                 >
                   {ICONS[card.icon]}
                 </div>

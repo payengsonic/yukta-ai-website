@@ -104,11 +104,11 @@ export default function SupportPage() {
       {/* Direct contact */}
       <div
         className="rounded-3xl p-8 md:p-12 text-center"
-        style={{ background: "linear-gradient(135deg, rgba(79,70,229,0.05), rgba(0,194,168,0.05))" }}
+        style={{ background: "linear-gradient(135deg, rgba(22,163,74,0.06), rgba(132,204,22,0.07))" }}
       >
         <div
           className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl"
-          style={{ background: "linear-gradient(135deg, rgba(79,70,229,0.1), rgba(0,194,168,0.1))" }}
+          style={{ background: "linear-gradient(135deg, rgba(22,163,74,0.12), rgba(132,204,22,0.14))" }}
           aria-hidden="true"
         >
           ✉️

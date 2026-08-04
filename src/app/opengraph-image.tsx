@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { BRAND } from "@/lib/constants";
+import { BRAND, STORES } from "@/lib/constants";
 
 export const runtime = "edge";
 export const alt = `${BRAND.name} — ${BRAND.tagline}`;
@@ -18,7 +18,7 @@ export default function OGImage() {
           justifyContent: "center",
           alignItems: "flex-start",
           padding: "80px",
-          background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #0f172a 100%)",
+          background: "linear-gradient(135deg, #052e16 0%, #14532d 60%, #052e16 100%)",
           fontFamily: "system-ui, sans-serif",
           position: "relative",
           overflow: "hidden",
@@ -33,7 +33,7 @@ export default function OGImage() {
             width: 500,
             height: 500,
             borderRadius: "50%",
-            background: "rgba(79,70,229,0.2)",
+            background: "rgba(34,197,94,0.22)",
             filter: "blur(80px)",
           }}
         />
@@ -45,7 +45,7 @@ export default function OGImage() {
             width: 400,
             height: 400,
             borderRadius: "50%",
-            background: "rgba(0,194,168,0.18)",
+            background: "rgba(132,204,22,0.2)",
             filter: "blur(80px)",
           }}
         />
@@ -64,7 +64,7 @@ export default function OGImage() {
               width: 64,
               height: 64,
               borderRadius: 16,
-              background: "linear-gradient(135deg, #4f46e5, #00c2a8)",
+              background: "linear-gradient(135deg, #16a34a, #84cc16)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -94,7 +94,7 @@ export default function OGImage() {
             fontWeight: 800,
             lineHeight: 1.1,
             marginBottom: 24,
-            background: "linear-gradient(90deg, #4f46e5, #00c2a8)",
+            background: "linear-gradient(90deg, #4ade80, #84cc16)",
             backgroundClip: "text",
             color: "transparent",
           }}
@@ -112,12 +112,13 @@ export default function OGImage() {
             marginBottom: 48,
           }}
         >
-          Compare grocery prices across Blinkit, Zepto &amp; Instamart. Let AI find your cheapest basket.
+          Compare grocery prices across 5 stores. Let AI find your cheapest basket, cook your
+          recipes, and track your nutrition.
         </div>
 
         {/* Platform pills */}
         <div style={{ display: "flex", gap: 12 }}>
-          {["Blinkit", "Zepto", "Instamart"].map((store) => (
+          {STORES.map((store) => (
             <div
               key={store}
               style={{
@@ -145,7 +146,9 @@ export default function OGImage() {
             color: "rgba(255,255,255,0.25)",
           }}
         >
-          {BRAND.company} · {BRAND.siteUrl}
+          {/* Single text child on purpose — satori throws on a multi-child div that
+              lacks an explicit display value. */}
+          {`${BRAND.company} · ${BRAND.siteUrl}`}
         </div>
       </div>
     ),

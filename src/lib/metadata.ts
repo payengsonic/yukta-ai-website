@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BRAND } from "./constants";
+import { BRAND, STORE_LIST } from "./constants";
 
 interface PageMetadataOptions {
   title?: string;
@@ -17,7 +17,7 @@ export function generatePageMetadata({
   const pageTitle = title ? `${title} | ${BRAND.name}` : `${BRAND.name} — ${BRAND.tagline}`;
   const pageDescription =
     description ??
-    "YUKTA AI compares grocery prices across Blinkit, Zepto, and Instamart so you always get the best deal. Shop smarter and save money on every order.";
+    `YUKTA AI compares grocery prices across ${STORE_LIST} so you always get the best deal. Shop smarter and save money on every order.`;
   const url = `${BRAND.siteUrl}${path}`;
 
   return {
@@ -27,6 +27,10 @@ export function generatePageMetadata({
     alternates: {
       canonical: url,
     },
+    // Points at the generated OG image from app/opengraph-image.tsx rather than a static
+    // file. Defining `openGraph` here replaces the inherited object wholesale, so the
+    // image has to be named explicitly — omitting it leaves the page with no og:image,
+    // and the previous /og-image.png it pointed at never existed.
     openGraph: {
       title: pageTitle,
       description: pageDescription,
@@ -36,7 +40,7 @@ export function generatePageMetadata({
       type: "website",
       images: [
         {
-          url: "/og-image.png",
+          url: "/opengraph-image",
           width: 1200,
           height: 630,
           alt: `${BRAND.name} — ${BRAND.tagline}`,
@@ -47,7 +51,7 @@ export function generatePageMetadata({
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
-      images: ["/og-image.png"],
+      images: ["/opengraph-image"],
     },
     robots: noIndex
       ? { index: false, follow: false }

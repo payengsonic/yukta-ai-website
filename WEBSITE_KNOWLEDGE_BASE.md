@@ -4,6 +4,31 @@
 
 ---
 
+## ⚠️ READ FIRST — THIS FOLDER DOES NOT DEPLOY
+
+**`SmartSaverApp/website/` (this folder) is a stale mirror. Editing it changes nothing on the live site.**
+
+| | This folder | The live site |
+|---|---|---|
+| Repo | `UdaanSparkAI/SmartSaverApp` (Android repo) | `yukta-ai-website` (separate public repo) |
+| Deploys to | nothing | `https://yukta.udaansparkai.com` via Vercel |
+| Last updated | 9 July 2026 (`cb76ecc`) | ahead of this copy |
+
+**Verified 3 August 2026** — the live site is *ahead* of this folder and already contains content that does not exist here:
+- a **"What Our Users Say"** testimonials section (no `TestimonialsSection.tsx` in this folder)
+- **Chef Agent** and **AI Diet Plan / Nutrition Agent** marketing content
+- the assets this document describes below (`yukta-icon.png`, `public/app/*.jpeg`) — **none of which exist in this folder's `public/`**
+
+So treat the file listings in sections 3 and 8 below as describing the **deploy repo**, not this folder.
+
+### Consequences
+
+1. Any change made here must be **ported to the `yukta-ai-website` repo** to go live.
+2. Do **not** copy this folder over the deploy repo wholesale — you would delete the testimonials section and the real screenshots. Port changes file by file.
+3. There is **no clone of the deploy repo on this machine.** The path in section 10 (`C:\Users\Sonic\yukta-ai-website`) is from a *different* machine and does not exist here. Clone the deploy repo before attempting a deploy.
+
+---
+
 ## Table of Contents
 1. [High-Level Architecture](#1-high-level-architecture)
 2. [Tech Stack](#2-tech-stack)
@@ -309,12 +334,21 @@ On Vercel this is set in: **Vercel Dashboard → yukta-ai-website → Settings �
 ## 10. Deployment Workflow
 
 ### Where to work
-All website code lives in: `C:\Users\Sonic\yukta-ai-website\`
 
-Open in VS Code:
+Deployable website code lives in the **standalone `yukta-ai-website` repo** — *not* in
+`SmartSaverApp/website/`. See the ⚠️ banner at the top of this document.
+
+The absolute path differs per machine. On the machine this doc was originally written on it was
+`C:\Users\Sonic\yukta-ai-website\`; **that path does not exist on every machine.** Confirm you are
+in the right place before working:
+
 ```powershell
-code C:\Users\Sonic\yukta-ai-website
+# You are in the DEPLOY repo only if this prints a yukta-ai-website remote:
+git remote -v
+# If it prints UdaanSparkAI/SmartSaverApp, you are in the Android repo — changes here will NOT deploy.
 ```
+
+If you have no local clone yet, clone the deploy repo first, then open it in VS Code.
 
 ### Standard deploy (make changes → push → live in ~1 min)
 
@@ -442,9 +476,11 @@ Edit `src/lib/constants.ts` → append to `FAQ_ITEMS`:
 
 ## 13. Common Mistakes & How to Avoid Them
 
-### ❌ Editing files in `S:\SmartSaverApp\website\` and expecting them to deploy
-**Why it fails:** That folder is the original working copy inside the Android repo. The deployed site is built from `C:\Users\Sonic\yukta-ai-website\` (the standalone public repo).
-**Fix:** Always work in `C:\Users\Sonic\yukta-ai-website\` for website changes.
+### ❌ Editing files in `SmartSaverApp/website/` and expecting them to deploy
+**Why it fails:** That folder is a stale mirror inside the Android repo. Nothing builds or deploys from it. The live site is built from the standalone `yukta-ai-website` repo.
+**Symptom:** You push, Vercel shows no new deployment, and the live site is unchanged.
+**Fix:** Run `git remote -v` before editing. If it shows `UdaanSparkAI/SmartSaverApp`, you are in the wrong repo — port your change to `yukta-ai-website` instead.
+**Also:** the mirror is *behind* the live site, so never bulk-copy it over the deploy repo. Port file by file. See the ⚠️ banner at the top.
 
 ### ❌ Using `"use client"` on a page that also exports `metadata`
 **Why it fails:** Next.js App Router cannot export `metadata` from a Client Component file.

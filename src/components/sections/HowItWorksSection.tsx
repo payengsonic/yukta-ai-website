@@ -1,7 +1,7 @@
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { StepTimeline } from "@/components/ui/StepTimeline";
 import { GradientText } from "@/components/ui/GradientText";
-import { HOW_IT_WORKS } from "@/lib/constants";
+import { HOW_IT_WORKS, STORES } from "@/lib/constants";
 
 export function HowItWorksSection() {
   return (
@@ -25,7 +25,7 @@ export function HowItWorksSection() {
             {/* Summary stats */}
             <div className="grid grid-cols-3 gap-4">
               {[
-                { value: "All", unit: "Quick Apps", desc: "Compared instantly" },
+                { value: String(STORES.length), unit: "Platforms", desc: "Compared instantly" },
                 { value: "₹247", unit: "Avg Saved", desc: "Per grocery order" },
                 { value: "<10s", unit: "Results", desc: "AI processing time" },
               ].map((stat) => (

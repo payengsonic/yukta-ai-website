@@ -31,7 +31,7 @@ export default function ContactPage() {
             <div className="flex items-start gap-4">
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 text-lg"
-                style={{ background: "rgba(79,70,229,0.08)" }}
+                style={{ background: "rgba(22,163,74,0.08)" }}
                 aria-hidden="true"
               >
                 ✉️
@@ -50,7 +50,7 @@ export default function ContactPage() {
             <div className="flex items-start gap-4">
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 text-lg"
-                style={{ background: "rgba(0,194,168,0.08)" }}
+                style={{ background: "rgba(132,204,22,0.12)" }}
                 aria-hidden="true"
               >
                 🕐
@@ -64,7 +64,7 @@ export default function ContactPage() {
             <div className="flex items-start gap-4">
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 text-lg"
-                style={{ background: "rgba(79,70,229,0.08)" }}
+                style={{ background: "rgba(22,163,74,0.08)" }}
                 aria-hidden="true"
               >
                 🌐

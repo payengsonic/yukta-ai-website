@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/metadata";
-import { BRAND } from "@/lib/constants";
+import { BRAND, STORE_LIST } from "@/lib/constants";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Privacy Policy",
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
         <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-2">Legal</p>
         <h1 className="text-3xl md:text-4xl font-extrabold text-dark mb-3">Privacy Policy</h1>
         <p className="text-muted text-sm">
-          Last updated: <time dateTime="2026-07-08">8 July 2026</time>
+          Last updated: <time dateTime="2026-08-03">3 August 2026</time>
         </p>
       </div>
 
@@ -64,13 +64,26 @@ export default function PrivacyPage() {
             <strong>Device Information</strong>: We may collect device model, operating system
             version, and app version for crash reporting and compatibility.
           </p>
+          <p>
+            <strong>Subscription Information</strong>: When you start a free trial or purchase a
+            YUKTA Premium subscription, we store your entitlement status — the plan, its expiry
+            date, whether the trial has been used, and the Google Play purchase token and order ID
+            — linked to your account. This is required to grant access and to enforce the one-trial
+            limit. <strong>We never receive or store your card, UPI, or bank details</strong>; all
+            payments are handled entirely by Google Play.
+          </p>
         </Section>
 
         <Section title="3. How We Use Your Information">
           <ul className="list-disc pl-5 space-y-1.5">
             <li>To authenticate you and personalise your shopping experience</li>
-            <li>To compare grocery prices across Blinkit, Zepto, and Instamart on your behalf</li>
+            <li>To compare grocery prices across {STORE_LIST} on your behalf</li>
             <li>To provide AI-driven basket recommendations and product alternatives</li>
+            <li>
+              To generate recipes, score products for nutrition, and track your diet goals when you
+              use Chef AI and Nutrition AI
+            </li>
+            <li>To manage your free trial and subscription entitlement</li>
             <li>To improve app performance, fix bugs, and develop new features</li>
             <li>To respond to support requests and enquiries</li>
             <li>To comply with legal obligations</li>
@@ -88,8 +101,13 @@ export default function PrivacyPage() {
               Google&apos;s Privacy Policy.
             </li>
             <li>
-              <strong>Blinkit, Zepto, Instamart</strong>: Price and product data is fetched from
-              these platforms in real time. We do not share your personal data with them.
+              <strong>{STORE_LIST}</strong>: Price and product data is fetched from these platforms
+              in real time. We do not share your personal data with them.
+            </li>
+            <li>
+              <strong>Google Play Billing (Google LLC)</strong>: Processes all subscription
+              payments. Google shares a purchase token and order ID with us to confirm your
+              entitlement; your payment details remain with Google.
             </li>
             <li>
               <strong>Groq AI</strong>: Powers our recipe and AI recommendation features. Queries

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { BRAND } from "@/lib/constants";
+import { BRAND, STORE_LIST } from "@/lib/constants";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,27 +23,25 @@ export const metadata: Metadata = {
     default: `${BRAND.name} — ${BRAND.tagline}`,
     template: `%s | ${BRAND.name}`,
   },
-  description:
-    "YUKTA AI compares grocery prices across Blinkit, Zepto, and Instamart so you always get the best deal. Shop smarter and save money on every order.",
+  description: `YUKTA AI compares grocery prices across ${STORE_LIST} so you always get the best deal. Shop smarter and save money on every order.`,
   metadataBase: new URL(BRAND.siteUrl),
+  // See src/lib/metadata.ts — `images` is deliberately omitted so app/opengraph-image.tsx
+  // supplies the OG image for every route.
   openGraph: {
     siteName: BRAND.name,
     locale: "en_IN",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/yukta-icon.png", type: "image/png" },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: "/yukta-icon.png",
   },
 };
 

@@ -5,12 +5,33 @@ export const BRAND = {
   company: "Udaan Spark AI",
   tagline: "Shop Smarter. Save More.",
   description:
-    "YUKTA AI is your AI-powered grocery shopping assistant. Compare prices across all major quick delivery apps and get personalised recommendations based on your budget, nutrition goals, and taste — not just the lowest price.",
+    "YUKTA AI is your AI-powered grocery shopping assistant. Compare prices across Blinkit, Zepto, Swiggy Instamart, BigBasket and JioMart instantly, let AI build your cheapest basket, and transfer it to the store app in one tap.",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://yukta.udaansparkai.com",
   companyUrl: "https://udaansparkai.com",
   supportEmail: "support@udaansparkai.com",
   playStoreUrl: "#", // placeholder until app is live
   year: 2026,
+} as const;
+
+/**
+ * The stores YUKTA AI actually scrapes. Must stay in sync with ALL_STORE_NAMES in
+ * the Android app (SearchViewModel.kt / BasketCalculator.kt).
+ */
+export const STORES = ["Blinkit", "Zepto", "Swiggy Instamart", "BigBasket", "JioMart"] as const;
+
+/** Human-readable store list, e.g. "Blinkit, Zepto, Swiggy Instamart, BigBasket and JioMart". */
+export const STORE_LIST = `${STORES.slice(0, -1).join(", ")} and ${STORES[STORES.length - 1]}`;
+
+/**
+ * YUKTA Premium pricing. Must stay in sync with the Play Console subscription and
+ * SubscriptionScreen.kt in the Android app.
+ */
+export const PRICING = {
+  monthlyPrice: 59,
+  currency: "INR",
+  currencySymbol: "₹",
+  trialDays: 3,
+  playProductId: "yukta_premium_monthly",
 } as const;
 
 export const NAV_LINKS: NavLink[] = [
@@ -22,40 +43,40 @@ export const NAV_LINKS: NavLink[] = [
 
 export const FEATURES: FeatureCard[] = [
   {
-    icon: "assistant",
-    title: "AI Chatbot with Voice",
-    description:
-      "Talk to YUKTA AI using text or your mic. Ask anything — prices, substitutes, recipes, or nutrition — and get instant intelligent answers.",
-  },
-  {
     icon: "compare",
-    title: "Multi-Store Price Comparison",
+    title: "AI Price Comparison",
     description:
-      "Search and compare prices across all major quick delivery apps simultaneously. See every option at a glance and always pick the best deal.",
+      `Instantly compare grocery prices across ${STORE_LIST} so you always get the lowest total basket cost.`,
   },
   {
-    icon: "cart",
-    title: "Nutrition-Curated Cart",
+    icon: "assistant",
+    title: "AI Shopping Assistant",
     description:
-      "YUKTA AI builds your grocery cart based on your health profile and nutritional goals — not just price, but what's actually good for you.",
+      "Chat with your grocery AI in plain language and it builds the cart for you — cheapest, healthiest, or fully vegan.",
   },
   {
-    icon: "swap",
-    title: "AI Diet Plan & Nutrition Agent",
+    icon: "chef",
+    title: "Chef AI",
     description:
-      "Set your dietary goals and let the Nutrition Agent create a personalised meal plan and automatically source the right ingredients.",
+      "Name any dish and Chef AI generates the recipe, then automatically sources every ingredient at the lowest price.",
   },
   {
-    icon: "lightning",
-    title: "Chef Agent",
+    icon: "nutrition",
+    title: "Nutrition AI",
     description:
-      "Pick any dish, set the number of people, and the Chef Agent figures out every ingredient and orders them for you — across the cheapest stores.",
+      "Every product gets a health score. Track your daily intake and let YUKTA AI keep your cart aligned with your diet goals.",
+  },
+  {
+    icon: "transfer",
+    title: "One-Tap Cart Transfer",
+    description:
+      "Stop re-adding items by hand. YUKTA AI loads your optimised basket straight into the store's own app — completely hands-free.",
   },
   {
     icon: "savings",
-    title: "Savings Dashboard",
+    title: "Smart Basket Optimization",
     description:
-      "Track every order, monitor how much you saved, and watch your cumulative savings grow. Smarter shopping decisions, every time.",
+      "The AI weighs price, delivery fees, and minimum order values across every store to land on your cheapest overall basket.",
   },
 ];
 
@@ -64,25 +85,25 @@ export const HOW_IT_WORKS: Step[] = [
     number: 1,
     title: "Search Your Groceries",
     description:
-      "Type what you need — from atta and dal to fruits and snacks. Or just ask YUKTA AI using your voice. No special format required.",
+      "Type the items you need — from atta and dal to fruits and snacks. No special format required.",
   },
   {
     number: 2,
-    title: "Compare Across All Quick Apps",
+    title: "Compare Multiple Stores",
     description:
-      "YUKTA AI fetches real-time prices from all major quick delivery apps simultaneously — one search, every option.",
+      `YUKTA AI fetches real-time prices from ${STORE_LIST} simultaneously.`,
   },
   {
     number: 3,
-    title: "AI Picks Your Perfect Basket",
+    title: "AI Finds the Best Basket",
     description:
-      "Our AI weighs price, quality, nutrition, and your personal preferences to recommend the basket that fits you best — not just the cheapest, but the smartest choice for your needs.",
+      "Our AI analyses thousands of combinations to recommend the cheapest overall basket — including delivery fees.",
   },
   {
     number: 4,
-    title: "Checkout with Confidence",
+    title: "Transfer and Checkout",
     description:
-      "Review your AI-optimised cart and head straight to checkout. Every order is smarter, healthier, and better value than shopping alone.",
+      "Send the optimised basket to the store's app in one tap, then check out. Save money on every single order.",
   },
 ];
 
@@ -91,7 +112,7 @@ export const WHY_YUKTA: WhyCard[] = [
     icon: "rupee",
     title: "Saves You Money",
     description:
-      "Real savings on every order — not cashback, not coupons. The smartest price for your needs, every time.",
+      "Real savings on every order — not cashback, not coupons. Just the cheapest price, guaranteed.",
   },
   {
     icon: "clock",
@@ -109,7 +130,7 @@ export const WHY_YUKTA: WhyCard[] = [
     icon: "store",
     title: "Multiple Platforms",
     description:
-      "Blinkit, Zepto, and Instamart — all in one place. More platforms coming soon.",
+      `${STORE_LIST} — all in one place. More platforms coming soon.`,
   },
   {
     icon: "decision",
@@ -129,17 +150,27 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: "How does YUKTA AI compare prices across stores?",
     answer:
-      "YUKTA AI fetches live product listings from all major quick delivery apps in real time. Our AI then analyses every combination to recommend the smartest basket — factoring in price, quality, nutritional value, delivery fees, and your personal preferences.",
+      `YUKTA AI fetches live product listings from ${STORE_LIST} in real time. Our AI engine then analyses every combination of stores to find the lowest total basket cost — accounting for delivery fees and minimum order values.`,
   },
   {
     question: "Which grocery platforms are currently supported?",
     answer:
-      "We support all major quick delivery apps including Blinkit, Zepto, and Instamart. We are actively expanding to more platforms including BigBasket and Amazon Fresh in upcoming releases.",
+      `We currently support five platforms: ${STORE_LIST}. We are actively working on adding more in upcoming releases.`,
+  },
+  {
+    question: "Can YUKTA AI add items to the store app for me?",
+    answer:
+      "Yes. Once the AI has picked your cheapest basket, one-tap cart transfer loads every item straight into the store's own app — you just review and check out. No re-adding items by hand.",
+  },
+  {
+    question: "What can Chef AI and Nutrition AI do?",
+    answer:
+      "Chef AI turns any dish name into a full recipe and then sources every ingredient at the lowest price across all five stores. Nutrition AI scores each product for healthiness, tracks your daily intake, and keeps your cart aligned with your personal diet goals.",
   },
   {
     question: "How does the AI decide which basket is best?",
     answer:
-      "Our AI considers price per unit, total cart value, delivery charges, nutritional value, and your personal preferences. It recommends the basket that gives you the best overall value — not just the cheapest, but the most intelligent choice based on your budget, health goals, and shopping style.",
+      "Our AI evaluates price per unit, total cart value, delivery charges, and estimated delivery time. It recommends the combination that minimises your total spend while meeting your quantity requirements.",
   },
   {
     question: "Is Google Login supported?",
@@ -147,9 +178,14 @@ export const FAQ_ITEMS: FAQItem[] = [
       "Yes. YUKTA AI uses Google Sign-In for secure, one-tap authentication. We do not store your Google password — only the basic profile information (name and email) required to personalise your experience.",
   },
   {
-    question: "Is the app free to use?",
+    question: "How much does YUKTA AI cost?",
     answer:
-      "Yes, YUKTA AI is completely free to download and use. We may introduce optional premium features in the future, but the core price comparison and AI shopping features will always remain free.",
+      `YUKTA AI is free to download and starts with a ${PRICING.trialDays}-day free trial — no payment is needed to begin. After the trial, YUKTA Premium is ${PRICING.currencySymbol}${PRICING.monthlyPrice} per month, billed through Google Play. You can cancel anytime and there is no lock-in.`,
+  },
+  {
+    question: "What happens when my free trial ends?",
+    answer:
+      `The ${PRICING.trialDays}-day trial is one-time per account and unlocks everything YUKTA Premium offers. When it ends you will be asked to subscribe for ${PRICING.currencySymbol}${PRICING.monthlyPrice} per month to keep using the app. You are never charged automatically without subscribing, and you can cancel at any time from Play Store → Account → Subscriptions.`,
   },
   {
     question: "How is my personal data protected?",

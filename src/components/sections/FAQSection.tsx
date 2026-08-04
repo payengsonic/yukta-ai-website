@@ -2,7 +2,7 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Accordion } from "@/components/ui/Accordion";
 import { GradientText } from "@/components/ui/GradientText";
 import { Button } from "@/components/ui/Button";
-import { FAQ_ITEMS } from "@/lib/constants";
+import { FAQ_ITEMS, PRICING, STORE_LIST } from "@/lib/constants";
 
 export function FAQSection() {
   return (
@@ -32,10 +32,10 @@ export function FAQSection() {
         <AnimatedSection delay={0.2} className="mt-12 text-center p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-accent/5 border border-primary/10">
           <h3 className="text-xl font-bold text-dark mb-2">Ready to save on groceries?</h3>
           <p className="text-muted text-sm mb-6">
-            Download YUKTA AI and start comparing prices across Blinkit, Zepto, and Instamart today.
+            Download YUKTA AI and start comparing prices across {STORE_LIST} today.
           </p>
           <Button href="#" size="lg" variant="primary">
-            Get YUKTA AI — It&apos;s Free
+            Start Your {PRICING.trialDays}-Day Free Trial
           </Button>
         </AnimatedSection>
       </div>

@@ -9,25 +9,27 @@ const ICONS: Record<string, React.ReactNode> = {
       <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
     </svg>
   ),
-  cart: (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
-      <path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6" />
-    </svg>
-  ),
   assistant: (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
     </svg>
   ),
-  swap: (
+  chef: (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" />
+      <path d="M7 21h10M8 14h8M6.5 14a4.5 4.5 0 01-1.2-8.84 3.6 3.6 0 016.7-1.36 3.6 3.6 0 016.7 1.36A4.5 4.5 0 0117.5 14z" />
+      <path d="M8 14v5a2 2 0 002 2h4a2 2 0 002-2v-5" />
     </svg>
   ),
-  lightning: (
+  nutrition: (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      <path d="M11 20c-4 0-7-3-7-7s3-7 8-7c0 0 3-3 7-3 0 4-3 7-3 7 0 5-3 8-5 10z" />
+      <path d="M8 21c0-5 3-9 7-11" />
+    </svg>
+  ),
+  transfer: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 8h13m0 0l-3.5-3.5M17 8l-3.5 3.5" />
+      <path d="M20 16H7m0 0l3.5-3.5M7 16l3.5 3.5" />
     </svg>
   ),
   savings: (
@@ -62,7 +64,7 @@ export function FeaturesSection() {
               <Card hover className="h-full flex flex-col gap-4">
                 <div
                   className="w-12 h-12 rounded-2xl flex items-center justify-center text-primary"
-                  style={{ background: "linear-gradient(135deg, rgba(79,70,229,0.1), rgba(0,194,168,0.1))" }}
+                  style={{ background: "linear-gradient(135deg, rgba(22,163,74,0.12), rgba(132,204,22,0.14))" }}
                 >
                   {ICONS[feature.icon]}
                 </div>

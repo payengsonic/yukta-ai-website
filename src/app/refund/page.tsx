@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/metadata";
-import { BRAND } from "@/lib/constants";
+import { BRAND, PRICING } from "@/lib/constants";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Refund & Cancellation Policy",
@@ -27,35 +27,48 @@ export default function RefundPage() {
           Refund & Cancellation Policy
         </h1>
         <p className="text-muted text-sm">
-          Last updated: <time dateTime="2026-07-08">8 July 2026</time>
+          Last updated: <time dateTime="2026-08-03">3 August 2026</time>
         </p>
       </div>
 
       <div>
-        <Section title="1. Current App Status">
+        <Section title="1. Pricing and Current App Status">
           <p>
-            <strong>{BRAND.name}</strong> is currently available as a completely <strong>free</strong>{" "}
-            application. There are no charges, subscriptions, or in-app purchases at this time.
-            This policy is published to comply with Google Play Store requirements and to outline
-            how we will handle refunds if premium features are introduced in the future.
+            <strong>{BRAND.name}</strong> is free to download and includes a one-time{" "}
+            <strong>{PRICING.trialDays}-day free trial</strong>. No payment is taken to start the
+            trial.
+          </p>
+          <p>
+            After the trial ends, continued use of the app requires a{" "}
+            <strong>YUKTA Premium</strong> subscription at{" "}
+            <strong>
+              {PRICING.currencySymbol}
+              {PRICING.monthlyPrice} per month
+            </strong>
+            , billed through your Google Play account. The subscription renews monthly until you
+            cancel, and you may cancel at any time.
+          </p>
+          <p>
+            The {PRICING.trialDays}-day trial is limited to one per account. This policy explains
+            how we handle cancellations and refunds for that subscription.
           </p>
         </Section>
 
-        <Section title="2. Future Premium Features">
+        <Section title="2. What YUKTA Premium Includes">
           <p>
-            We may introduce optional premium subscription plans or one-time purchase features in
-            future versions of YUKTA AI. Any premium features will be clearly labelled, and you
-            will always be able to see exactly what you are purchasing before completing a
-            transaction.
+            A YUKTA Premium subscription unlocks the full app, including live price comparison
+            across all five supported stores, the AI shopping assistant, Chef AI recipe generation,
+            Nutrition AI health scores and diet tracking, and one-tap cart transfer.
           </p>
           <p>
-            Core price comparison and AI shopping features will remain free for all users.
+            You will always be able to see exactly what you are purchasing, and at what price,
+            before completing a transaction.
           </p>
         </Section>
 
-        <Section title="3. Cancellation Policy (Future Subscriptions)">
+        <Section title="3. Cancellation Policy">
           <p>
-            If you purchase a premium subscription, you may cancel it at any time through:
+            You may cancel your subscription at any time through:
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>
@@ -73,9 +86,12 @@ export default function RefundPage() {
             Upon cancellation, your access to premium features will continue until the end of the
             current billing period. No future charges will be made.
           </p>
+          <p>
+            Cancelling during the {PRICING.trialDays}-day free trial means you are never charged.
+          </p>
         </Section>
 
-        <Section title="4. Refund Eligibility (Future Purchases)">
+        <Section title="4. Refund Eligibility">
           <p>
             Refund requests may be considered in the following circumstances:
           </p>
