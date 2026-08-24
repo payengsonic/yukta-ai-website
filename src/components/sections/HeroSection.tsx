@@ -106,9 +106,6 @@ export function HeroSection() {
                   <path d="M15.3 12l-.01-5.66L4.42.2 15.3 12z" opacity=".4" />
                 </svg>
                 Download on Google Play
-                <span className="text-xs bg-white/20 px-2 py-0.5 rounded-full font-normal">
-                  Coming Soon
-                </span>
               </Button>
 
               <Button href="#features" size="lg" variant="outline">
