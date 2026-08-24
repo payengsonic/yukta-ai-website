@@ -68,7 +68,7 @@ export function AppPreviewSection() {
               </ul>
 
               <Button href={BRAND.playStoreUrl} size="lg" variant="secondary">
-                Coming to Google Play
+                Download on Google Play
               </Button>
             </AnimatedSection>
 
